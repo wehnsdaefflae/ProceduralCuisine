@@ -2,8 +2,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import TypeVar, Optional
 
-from src.ingredients import Ingredient
-from src.units import Length, AMOUNT_UNIT
+from procedural_cuisine.ingredients import Ingredient
+from procedural_cuisine.units import Length, AMOUNT_UNIT
 
 CONCRETE_INGREDIENT = TypeVar("CONCRETE_INGREDIENT", bound=Ingredient)
 
@@ -15,6 +15,8 @@ class Utensil(ABC):
 class Container(Utensil, ABC):
     def __init__(self):
         self.contents = set()
+        self.temperature_content_degree_celsius = 20.
+        self.viscosity_content_pas = 1.
 
     def transfer_to(self, value: float, unit: AMOUNT_UNIT, container: Container):
         ...
@@ -27,13 +29,13 @@ class Container(Utensil, ABC):
         ...
 
     def is_content_boiling(self) -> bool:
-        ...
+        return self.temperature_content_degree_celsius >= 100.
 
     def is_content_thickened(self) -> bool:
-        ...
+        return self.viscosity_content_pas >= 100.
 
     def is_content_paste(self) -> bool:
-        ...
+        return self.viscosity_content_pas >= 100_000.
 
 
 class ServingContainer(Container):
@@ -56,16 +58,20 @@ class Pot(Container):
         self.minimum_diameter = minimum_diameter
 
     def heat(self):
-        ...
+        self.temperature_content_degree_celsius += 1.
 
     def sear(self):
-        ...
+        self.heat()
 
     def cook(self):
-        ...
+        self.heat()
 
     def simmer(self):
-        ...
+        if self.temperature_content_degree_celsius < 100.:
+            self.heat()
+
+        elif self.temperature_content_degree_celsius >= 20.:
+            self.temperature_content_degree_celsius -= 1.
 
     def stir(self):
         ...

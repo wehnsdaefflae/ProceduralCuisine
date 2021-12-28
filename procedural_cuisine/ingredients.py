@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.units import AMOUNT_UNIT, Amount
+from procedural_cuisine.units import AMOUNT_UNIT, Amount
 
 
 class CookingException(Exception):

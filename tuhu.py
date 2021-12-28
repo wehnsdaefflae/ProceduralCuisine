@@ -1,7 +1,7 @@
-from src.ingredients import State, Ingredient
-from src.meals import Meal
-from src.units import MassUnit, VolumeUnit, ImpreciseUnit, LengthUnit, AMOUNT_UNIT, Length
-from src.utensils import Pot, MortarNPestle, Bowl
+from procedural_cuisine.ingredients import State, Ingredient
+from procedural_cuisine.meals import Meal
+from procedural_cuisine.units import MassUnit, VolumeUnit, ImpreciseUnit, LengthUnit, AMOUNT_UNIT, Length
+from procedural_cuisine.utensils import Pot, MortarNPestle, Bowl
 
 
 def prepare(ingredients: dict[str, tuple[float, AMOUNT_UNIT, set[State]]]) -> Meal:

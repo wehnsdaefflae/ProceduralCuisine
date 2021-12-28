@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from src.utensils import ServingContainer
+from procedural_cuisine.utensils import ServingContainer
 
 
 @dataclass
