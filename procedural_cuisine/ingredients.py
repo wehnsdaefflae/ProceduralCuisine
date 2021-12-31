@@ -26,6 +26,10 @@ class State(Enum):
     MOIST = 15
     SEARED = 16
     TRANSPARENT = 17
+    COOKING = 18
+    SIMMERING = 19
+    THICKENED = 20
+    PASTE = 21
 
     RENDERED = MELTED
 

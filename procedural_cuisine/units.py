@@ -23,7 +23,8 @@ class ImpreciseUnit(Unit):
     SMALL = 3
     PIECES = 4
     SERVING = 5
-    ALL = 6
+    PINCH = 6
+    ALL = 7
 
 
 AMOUNT_UNIT = MassUnit | VolumeUnit | ImpreciseUnit
