@@ -28,7 +28,7 @@ def prepare(ingredients: dict[str, Ingredient]) -> Meal:
 
 
 def main():
-    names_ingredients = {
+    ingredients_required = {
         "milk":     (.25, VolumeUnit.LITERS, {State.DEFAULT}),
         "semolina": (25, MassUnit.GRAMS, {State.DEFAULT}),
         "cinnamon": (1., ImpreciseUnit.TEASPOONS, {State.DEFAULT}),
@@ -36,7 +36,9 @@ def main():
         "salt":     (1., ImpreciseUnit.PINCH, {State.DEFAULT})
     }
 
-    meal = prepare({k: Ingredient(*v) for k, v in names_ingredients.items()})
+    ingredients_available = {k: Ingredient(*v) for k, v in ingredients_required.items()}
+
+    meal = prepare(ingredients_available)
     print(meal)
 
 
