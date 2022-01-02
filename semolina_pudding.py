@@ -5,25 +5,37 @@ from procedural_cuisine.utensils import Pot, Bowl
 
 
 def prepare(ingredients: dict[str, Ingredient]) -> Meal:
+    # prepare your utensils
     pot = Pot()
     bowl = Bowl()
 
+    # put all ingredients in the pot
     pot.add(*ingredients.values())
 
+    # set pot on high heat
     pot.set_heat(1.)
 
+    # whisk
     pot.whisk()
+
+    # wait until content is simmering
     while State.SIMMERING not in pot.state_content():
         continue
 
+    # turn off heat
     pot.set_heat(0.)
+
+    # whisk
     pot.whisk()
 
+    # transfer content into bowl
     pot.transfer_all_to(bowl)
 
+    # let cool down
     while State.HOT in bowl.state_content():
         continue
 
+    # serve
     return Meal(bowl)
 
 
